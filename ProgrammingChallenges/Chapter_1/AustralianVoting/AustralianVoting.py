@@ -6,7 +6,7 @@ def handleInputV1():
     """
     cases = []
 
-    with open("easytest.txt", "r") as fil:
+    with open("hardtest.txt", "r") as fil:
         n = int(fil.readline().strip())
         fil.readline()
 
@@ -27,20 +27,28 @@ def handleInputV1():
 
 def solveVote(case):
     """
-    :param case: Tuple (Candidate, Votes)
+    :param case: Tuple (Candidates, Votes)
     :return: List of winners of election
     """
-    return []
+    candidates, votes = case
+    currentvote = [0 for _ in range(len(candidates))]
+    winners = []
+    while not winners:
+        for vote in votes:
+            currentvote[int(vote[0])-1] += 1
+
+        winners.append(candidates[currentvote.index(max(currentvote))])
+
+    return winners
 
 
 def main():
     cases = handleInputV1()
     for case in cases:
+        print(case)
         voteWinners = solveVote(case)
         for winningCandidate in voteWinners:
             print(winningCandidate)
-
-
 
 
 if __name__ == '__main__':
