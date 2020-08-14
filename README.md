@@ -1,0 +1,2 @@
+# CompProg
+Competetive programming practice
