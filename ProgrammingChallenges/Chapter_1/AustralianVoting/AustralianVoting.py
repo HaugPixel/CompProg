@@ -6,7 +6,7 @@ def handleInputV1():
     """
     cases = []
 
-    with open("hardtest.txt", "r") as fil:
+    with open("easytest.txt", "r") as fil:
         n = int(fil.readline().strip())
         fil.readline()
 
@@ -24,6 +24,12 @@ def handleInputV1():
 
     return cases
 
+def newCount(votes):
+    """
+    Counts vote
+    return list of candidates by
+    """
+
 
 def solveVote(case):
     """
@@ -31,13 +37,16 @@ def solveVote(case):
     :return: List of winners of election
     """
     candidates, votes = case
-    currentvote = [0 for _ in range(len(candidates))]
+    currentvote = []
     winners = []
     while not winners:
+        currentvote = [0 for _ in range(len(candidates))]
         for vote in votes:
-            currentvote[int(vote[0])-1] += 1
-
-        winners.append(candidates[currentvote.index(max(currentvote))])
+            currentvote[int(vote.split()[0])-1] += 1
+        allVotesCount = len(votes)
+        for pos, canditateVoteCount in enumerate(currentvote):
+            if canditateVoteCount/allVotesCount >= 1/2:
+                winners.append(candidates[pos])
 
     return winners
 
