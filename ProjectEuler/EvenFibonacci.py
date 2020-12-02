@@ -24,4 +24,4 @@ def sumEvenFibonacci(n):
 
     return summ
 
-print(sumEvenFibonacci(100))
+Fibonacci(10000)

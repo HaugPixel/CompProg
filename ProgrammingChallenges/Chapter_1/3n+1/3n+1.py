@@ -1,4 +1,5 @@
 import sys
+
 d = {}
 
 
@@ -8,7 +9,7 @@ def findMaxCycle(i, k):
 
 
 def algorithm(n):
-    """Coswells"""
+    """Collatz"""
     length = d.get(n)
     if length:
         return length
